@@ -1,0 +1,29 @@
+{
+  "name": "hotels-tokenisation-demo",
+  "version": "1.0.0",
+  "description": "Luxury hotel direct booking demo with Adyen Drop-in, OPI and member tokenisation",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "@adyen/api-library": "^32.2.0",
+    "dotenv": "^18.0.8",
+    "express": "^5.3.0",
+    "express-session": "^1.19.0"
+  },
+  "private": true,
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "server.js",
+      "src",
+      "data",
+      ".env"
+    ],
+    "ext": "js,json"
+  }
+}

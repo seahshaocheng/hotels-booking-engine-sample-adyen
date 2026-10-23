@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Select a Room | Above Beyond</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header id="site-header"></header>
+  <div class="banner" style="background-image: url('/hotel-rooms/1.premier-room.jpg')"></div>
+
+  <main class="page">
+    <ol class="steps" id="steps"></ol>
+
+    <div class="stay-bar">
+      <strong id="stay-dates"></strong>
+      <span><span id="stay-guests"></span> <a class="link-caps" href="/booking/search">Edit</a></span>
+    </div>
+
+    <div class="includes">
+      <span class="label-caps">Your stay includes:</span>
+      <span>Rooftop Infinity Pool</span>
+      <span>Observation Deck</span>
+      <span>Wellness Classes</span>
+      <span>Fitness Centre</span>
+    </div>
+
+    <div id="room-list"><p class="loading">Finding available rooms…</p></div>
+  </main>
+
+  <div class="cart-bar" id="cart-bar" aria-live="polite">
+    <div class="cart-bar__inner">
+      <div class="cart-bar__summary" id="cart-summary"></div>
+      <div class="cart-bar__total" id="cart-total"></div>
+      <a class="btn" href="/booking/guest">Continue</a>
+    </div>
+  </div>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/rooms.js"></script>
+</body>
+</html>

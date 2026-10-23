@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book Your Stay | Above Beyond</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header id="site-header"></header>
+  <div class="banner" style="background-image: url('/hotel-rooms/1.premier-room.jpg')"></div>
+
+  <main class="page">
+    <h1 class="page-title">Book Your Stay</h1>
+    <ol class="steps" id="steps"></ol>
+
+    <form id="search-form" class="search-panel" novalidate>
+      <section class="search-panel__dates" aria-labelledby="dates-heading">
+        <div class="panel-head">
+          <h2 id="dates-heading">Dates of Stay</h2>
+          <dl class="stay-meta">
+            <div><dt>Check-in</dt><dd id="meta-in">Select a date</dd></div>
+            <div><dt>Check-out</dt><dd id="meta-out">—</dd></div>
+            <div><dt>Duration</dt><dd id="meta-duration">—</dd></div>
+          </dl>
+        </div>
+        <div class="calendar">
+          <button type="button" class="calendar__nav calendar__nav--prev" id="cal-prev" aria-label="Previous month">◀</button>
+          <button type="button" class="calendar__nav calendar__nav--next" id="cal-next" aria-label="Next month">▶</button>
+          <div class="calendar__months" id="calendar"></div>
+          <p class="legend">Prices shown are the lowest nightly rate in SGD. Select your check-in date, then your check-out date.</p>
+        </div>
+      </section>
+
+      <section class="guests" aria-labelledby="guests-heading">
+        <div class="panel-head">
+          <h2 id="guests-heading">Rooms &amp; Guests</h2>
+        </div>
+        <h3>Room 1</h3>
+        <div class="counter-row">
+          <label id="adults-label">Adults</label>
+          <div class="counter" data-counter="adults" data-min="1" data-max="6" aria-labelledby="adults-label">
+            <button type="button" data-step="-1" aria-label="Fewer adults">−</button>
+            <output>1</output>
+            <button type="button" data-step="1" aria-label="More adults">+</button>
+          </div>
+        </div>
+        <div class="counter-row">
+          <label id="children-label">Children<small>0–12 years</small></label>
+          <div class="counter" data-counter="children" data-min="0" data-max="6" aria-labelledby="children-label">
+            <button type="button" data-step="-1" aria-label="Fewer children">−</button>
+            <output>0</output>
+            <button type="button" data-step="1" aria-label="More children">+</button>
+          </div>
+        </div>
+      </section>
+    </form>
+
+    <div class="search-actions">
+      <span class="form-error" id="search-error" role="alert"></span>
+      <button class="btn" type="submit" form="search-form" id="search-next" disabled>Next: Select a Room</button>
+    </div>
+  </main>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/search.js"></script>
+</body>
+</html>

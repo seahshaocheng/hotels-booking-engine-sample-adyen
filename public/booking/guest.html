@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guest &amp; Payment | Above Beyond</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://checkoutshopper-test.cdn.adyen.com/checkoutshopper/sdk/6.47.0/adyen.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header id="site-header"></header>
+  <div class="banner" style="background-image: url('/hotel-rooms/1.premier-room.jpg')"></div>
+
+  <main class="page">
+    <ol class="steps" id="steps"></ol>
+
+    <div class="checkout">
+      <div class="card">
+        <section class="card__section card__section--alt" id="member-section">
+          <div id="member-login">
+            <h2>Already a Member?</h2>
+            <p class="sub">Log in with your email address to pre-fill your details.</p>
+            <form class="member-login" id="login-form" novalidate>
+              <label class="field">
+                <span>Member email</span>
+                <input class="input" type="email" id="login-email" placeholder="e.g. john@mail.com" autocomplete="email" required>
+              </label>
+              <button class="btn btn--ghost" type="submit">Log In</button>
+            </form>
+            <p class="form-error" id="login-error" role="alert"></p>
+          </div>
+          <div class="member-badge" id="member-badge" hidden>
+            <div>Welcome back, <strong id="member-name"></strong><br><span class="fine" id="member-email"></span></div>
+            <button class="link-caps" type="button" id="logout-btn">Log out</button>
+          </div>
+        </section>
+
+        <form id="guest-form" novalidate>
+          <section class="card__section">
+            <h2>Guest Information</h2>
+            <p class="sub">Please input in English only.</p>
+
+            <div class="field-row">
+              <label for="title">Title <span class="req">*</span></label>
+              <select class="select title-select" id="title" name="title" required>
+                <option>Mr.</option><option>Mrs.</option><option>Ms.</option><option>Miss</option><option>Dr.</option><option>Mx.</option>
+              </select>
+            </div>
+            <div class="field-row">
+              <label for="firstName">First Name <span class="req">*</span><small>(As printed on your passport)</small></label>
+              <input class="input" id="firstName" name="firstName" placeholder="e.g. John" autocomplete="given-name" required>
+            </div>
+            <div class="field-row">
+              <label for="lastName">Last Name <span class="req">*</span><small>(As printed on your passport)</small></label>
+              <input class="input" id="lastName" name="lastName" placeholder="e.g. Tan" autocomplete="family-name" required>
+            </div>
+            <div class="field-row">
+              <label for="country">Country/Territory <span class="req">*</span></label>
+              <select class="select" id="country" name="country" autocomplete="country" required></select>
+            </div>
+            <div class="field-row">
+              <label for="phone">Phone Number <span class="req">*</span></label>
+              <div class="phone">
+                <select class="select" id="phoneCode" name="phoneCode" aria-label="Country calling code" required></select>
+                <input class="input" id="phone" name="phone" type="tel" placeholder="12345678" autocomplete="tel-national" inputmode="tel" required>
+              </div>
+            </div>
+            <div class="field-row">
+              <label for="email">Email Address <span class="req">*</span></label>
+              <div>
+                <input class="input" id="email" name="email" type="email" placeholder="e.g. john@mail.com" autocomplete="email" required>
+                <p class="note">Your email address is used to send your booking confirmation and, if you join, as your membership ID.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="card__section card__section--alt checks">
+            <label class="check" id="signup-row">
+              <input type="checkbox" id="signUp" name="signUp">
+              <span>Sign me up for a FREE membership<small>Enjoy member rates, rewards and faster checkout on future stays.</small></span>
+            </label>
+            <label class="check" id="savecard-row" hidden>
+              <input type="checkbox" id="saveCard" name="saveCard">
+              <span>Save my card for future bookings<small>Your card will be stored securely against your membership.</small></span>
+            </label>
+          </section>
+
+          <section class="card__section">
+            <div class="form-actions">
+              <span class="form-error" id="guest-error" role="alert"></span>
+              <button class="btn" type="submit" id="to-payment">Continue to Payment</button>
+              <button class="link-caps" type="button" id="edit-details" hidden>Edit guest details</button>
+            </div>
+          </section>
+        </form>
+
+        <section class="card__section payment-section" aria-labelledby="payment-heading">
+          <h2 id="payment-heading">Credit Card Information</h2>
+          <p class="payment-placeholder" id="payment-placeholder">Complete your guest information above to continue to secure payment.</p>
+          <div id="dropin-container"></div>
+        </section>
+      </div>
+
+      <aside class="card summary" id="summary" aria-label="Booking summary"></aside>
+    </div>
+  </main>
+
+  <script src="https://checkoutshopper-test.cdn.adyen.com/checkoutshopper/sdk/6.47.0/adyen.js"></script>
+  <script src="/js/common.js"></script>
+  <script src="/js/countries.js"></script>
+  <script src="/js/guest.js"></script>
+</body>
+</html>

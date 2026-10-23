@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Back Office | Above Beyond</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header id="site-header" data-solid></header>
+
+  <main class="page bo">
+    <div class="bo__head">
+      <div>
+        <h1>Reservations</h1>
+        <p>All bookings held in the demo database, with payment status and tokens from Adyen webhooks.</p>
+      </div>
+      <div class="bo__tools">
+        <label class="check" style="font-size:14px"><input type="checkbox" id="auto-refresh" checked> Auto-refresh</label>
+        <button class="btn btn--ghost" type="button" id="refresh">Refresh</button>
+      </div>
+    </div>
+
+    <dl class="stats" id="stats"></dl>
+
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>Reservation</th>
+            <th>Guest</th>
+            <th>Room</th>
+            <th>Stay</th>
+            <th class="num">Amount</th>
+            <th>Payment</th>
+            <th>Reservation</th>
+            <th>Save card</th>
+            <th>Tokens</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="reservations"></tbody>
+      </table>
+    </div>
+
+    <h2>Members</h2>
+    <div class="table-wrap">
+      <table class="data" style="min-width:720px">
+        <thead>
+          <tr><th>Member ID (email)</th><th>Name</th><th>Country</th><th>Phone</th><th>Saved cards (member tokens)</th></tr>
+        </thead>
+        <tbody id="members"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/backoffice.js"></script>
+</body>
+</html>

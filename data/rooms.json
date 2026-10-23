@@ -1,0 +1,105 @@
+{
+  "currency": "SGD",
+  "rooms": [
+    {
+      "id": "studio-room",
+      "name": "Studio Room",
+      "image": "/hotel-rooms/0.studio-room.jpg",
+      "tier": 0,
+      "pricePerNight": 200,
+      "collection": "The Harbour Collection",
+      "view": "Sea view",
+      "sizeSqm": 38,
+      "maxGuests": 2,
+      "bed": "King Bed",
+      "description": "A light-filled studio opening onto a private balcony over the harbour. Floor-to-ceiling glass, a plush king bed and a cosy reading corner make it an easy retreat after a day in the city.",
+      "features": ["Private balcony with sea view", "Plush king bed with premium linen", "Rainfall shower"]
+    },
+    {
+      "id": "premier-room",
+      "name": "Premier Room",
+      "image": "/hotel-rooms/1.premier-room.jpg",
+      "tier": 1,
+      "pricePerNight": 450,
+      "collection": "The Harbour Collection",
+      "view": "City skyline view",
+      "sizeSqm": 45,
+      "maxGuests": 3,
+      "bed": "King Bed or 2 Queen Beds",
+      "description": "Wake up to the skyline. The Premier Room pairs a generous sleeping area with a window-side lounge, a bespoke cocktail cabinet and a marble bathroom with a deep soaking tub.",
+      "features": ["Bespoke armoire & cocktail bar", "Window-side lounge seating", "Deep soaking tub"]
+    },
+    {
+      "id": "premier-suite",
+      "name": "Premier Suite",
+      "image": "/hotel-rooms/2.premier-suite.jpg",
+      "tier": 2,
+      "pricePerNight": 700,
+      "collection": "The Garden Collection",
+      "view": "Garden & bay view",
+      "sizeSqm": 75,
+      "maxGuests": 3,
+      "bed": "King Bed",
+      "description": "A one-bedroom suite overlooking the gardens and the bay beyond. A separate living room with designer furnishings gives you space to unwind, entertain or work in comfort.",
+      "features": ["Separate living room", "Garden and bay panorama", "Nespresso & curated minibar"]
+    },
+    {
+      "id": "bay-suite",
+      "name": "Bay Suite",
+      "image": "/hotel-rooms/3.bay-suite.jpg",
+      "tier": 3,
+      "pricePerNight": 950,
+      "collection": "The Harbour Collection",
+      "view": "Panoramic bay view",
+      "sizeSqm": 95,
+      "maxGuests": 4,
+      "bed": "King Bed",
+      "description": "Sweeping views across the bay from every corner. The Bay Suite includes a spacious lounge, a dining area with pantry and a private bar, all framed by full-height windows.",
+      "features": ["Panoramic bay views", "Dining area with pantry", "Private bar & lounge"]
+    },
+    {
+      "id": "family-suite",
+      "name": "Family Suite",
+      "image": "/hotel-rooms/4.family-suite.jpg",
+      "tier": 4,
+      "pricePerNight": 1950,
+      "collection": "The Family Collection",
+      "view": "City view",
+      "sizeSqm": 110,
+      "maxGuests": 6,
+      "bed": "King Bed + Kids' Bunk Room",
+      "description": "Designed with little explorers in mind. A playful kids' room with built-in bunk beds and jungle-inspired wallpaper connects to a calm master bedroom and shared living space.",
+      "features": ["Kids' bunk room", "Connecting master bedroom", "Family welcome amenities"]
+    },
+    {
+      "id": "presidential-suite",
+      "name": "Presidential Suite",
+      "image": "/hotel-rooms/5.presidential-suite.jpg",
+      "tier": 5,
+      "pricePerNight": 2950,
+      "collection": "The Signature Collection",
+      "view": "Sea view",
+      "sizeSqm": 220,
+      "maxGuests": 4,
+      "bed": "King Bed",
+      "description": "Our most distinguished address. Double-height windows, a curated art collection, a formal living and dining room and a dedicated butler make every stay truly above and beyond.",
+      "features": ["24-hour butler service", "Curated private art collection", "Formal living & dining room"]
+    }
+  ],
+  "packages": [
+    {
+      "id": "flexible",
+      "name": "Flexible Rate",
+      "badge": null,
+      "surchargePerNight": 0,
+      "inclusions": ["Free cancellation up to 2 days before your stay", "Earn 6% member rewards on your stay"]
+    },
+    {
+      "id": "rise-and-dine",
+      "name": "Rise and Dine",
+      "badge": "Breakfast Included",
+      "surchargePerNight": 80,
+      "inclusions": ["Daily breakfast for all registered guests", "Free cancellation up to 2 days before your stay"]
+    }
+  ]
+}

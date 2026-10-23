@@ -1,0 +1,54 @@
+Build a luxury hotel direct booking website that takes a 
+guest through a booking journey where a guest can choose room
+make a booking with his/her credit card and confirm booking.
+part of this application also generates token for OPI as well
+as a token that is stored to the member. We will be using Adyen checkout solution. basic flow will be used /sessions, /forward and /payments will be used at the backend. the frontend payment will be taken using drop-in.
+
+Here are the functional requirements for this website
+1. Home page. The booking page home page. just have hero page
+that spans the full width and height of the website. At the top,
+there should be a header that blends to the background, only turn
+white when user scroll. To the right, have a simple menu button, 
+the logo will be at the center and a book now button at the left. The menu opens up to 2 options, booking demo and hotel back office demo.
+You can use /hotels-page-mock/hotel-home.page.png as a reference.
+2. The user should be able to go through the booking flow by searching for room base on availability, select room, pay and enter guest info, and receive a confirmation. The rest of the functional requirements descripte the booking flow. in each page, show a breadcrumb steps 1) Searhc, 2) select a Room, 3) Guest and Credit Card, 4) Confirmation. The UI should highlight which step the user is at
+3. Booking page 1: use /hotels-page-mock/Bookinga-page-1.png for UI reference - this is the first page when user clicks on book now from the header. On this page, a) display a big calender that shows 2 months of dates and price under each date. users can select and navigate to different month. Blur out dates that are already past. Display dates from tomorrow onwards. 
+b) users can also indicate the number of aduits children. etc on this page. When user click on next, it will bring to the next page 
+3. Booking page 2 use /hotels-page-mock/Bookinga-page-2.png for UI reference: This page show case the rooms available. for the date selected, for the sake of demo, everything is vaialble. The room are shown in cards in a vertical manner. with images, some details of the room. followed by the price users can select a package. When selected, the website store the user selection like in a cart. and user have to click continue to go to the next page. 
+4. Booking page 3 use /hotels-page-mock/Bookinga-page-3.png for UI reference:  This page will display a form for guest information. First name, title, last name, country, phone number with a drop-down of country code of every possible country. email address. On this page, user. can log in using their email address which will pre-fill thees information. email address will be served as the uuid for the member. If its a guest, they can chbeck to box "sign me up for free memebership". The drop-in will be loaded in this page under the section after guest inforamtion. If logged in user or guest who indicate sign me up for free, have also a checkbox that says save card for future booking. this setting should be passed to /api/initaiteSession
+5. Confirmation page. The confirmation page here depends on Adyen resultCode. We will use the onPAymentCOmpleted fucntion in adyen drop-in to redirect here. 
+Authorised / Successful -> message we have received your payment; wait for email for confirmation
+Pending -> Please complete your payment and wait for email for confirmation
+Refused -> booking is not successful. please try again. 
+6. Back office. Single page that list the reservation stored in the database. 
+
+Here are the technical requiremetns for each site.
+1. Build this using Node JS express. 
+2. On the backend, use Adyen nodejs library. Expose the following endpoints. 
+a) /api/initiateSession : Create a reservation in database, the reservation id is a mix of room-datetimestap-a random 4 alphanumeric character to ensure uniqueness. then followed by calling Adyen /sessions API to start the payment session. return the Adyen session response result for frontend to load the drop-in. Use the reservation id as the reference for adyen/session api call. shopperREference="not_provided", include this field 	"additionalData":{
+      "opi.includeTransToken": true
+      }, storePaymentMethod = true. merchant account use from env. amount should be calculated as the price per night * number of night. 
+      From the frontend, user indication to save card should be stored with the researvation in the database as consent.
+      if this is guest, create a mmember in the database using the supplied email address as t he uuid. 
+b) /api/redirectUrl: for adyen to return URL to. this endpoint should read the result and redirect to the right confirmation page with status. 
+c) /api/webhook: for adyen incoming webhook. Process the webhook for result. here is the logic. If result is successful , success = true. Pull out ther eservation detail using the reference field in the webhook. extract the field opi.transtoken , tokenisation.shopperReference and tokenisation.storedPaymentID and update the reservation with it. If this belongs to a logged in member, and save card preference is indicated, use forwardAPI to convert the opi transtoken to regular adyen token. the body looks liek this.
+{
+  "merchantAccount": "{{merchant account from env file}}",
+  "shopperReference": "the webhook tokenisation.shopperREference value",
+  "storedPaymentMethodId": "the webhook tokenisation.storedPaymentId value",//This could be extracted from your existing integration
+  "baseUrl": "https://pal-test.adyen.com",
+  "request": {
+    "httpMethod": "POST",
+    "urlSuffix": "pal/servlet/Recurring/v30/storeToken",
+    "credentials": "{{api-key}}",
+    "headers": {
+      "X-Api-Key": "{{credentials}}",
+      "Content-Type": "application/json;charset=utf-8"
+    },
+    "body": "{\"card\":{\"expiryMonth\":\"{{expiryMonth}}\",\"expiryYear\":\"{{expiryYear}}\",\"holderName\":\"{{holderName}}\",\"number\":\"{{number}}\"},\"merchantAccount\":\"HTL_EC_HOTEL\",\"recurring\":{\"contract\":\"ONECLICK\"},\"shopperReference\":\"MEMBERSHIP_ID\"}" //insert the member id here. this is a json body stringified.
+  }
+}
+3. for database, just write them to server session for now. the reservation should include the room name, number of nights and payment status and reservation status. members should have the guest information only if user want to be a member.
+4. Keep a repository of the room in json file as data. for each image in /hotel-rooms create a room record. The currency set statically as SGD now. the number indicate the level of expensiveness. start from $200 per night and increase by 250 to 3. for family suite and predential suite increase it to 1000 per night. Generate some simple descripton for the room. 
+
+Just this for now. 
